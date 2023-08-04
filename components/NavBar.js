@@ -5,7 +5,7 @@ import Search from "./Search";
 import moment from "moment-timezone";
 
 import axios from "axios";
-// import IndexPage from "./pages";
+
 import "./WeatherCard.css";
 
 export default function NavBar() {
@@ -113,7 +113,7 @@ export default function NavBar() {
             <div id="grados1">
               <div id="grados">
                 <span>{data.main.temp.toFixed(0)}</span>
-                {/* <span>15</span> */}
+                
               </div>
               <div id="gradosc">
                 <span>ºC</span>
