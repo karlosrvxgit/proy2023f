@@ -4,13 +4,13 @@ import SideBar from "./SideBar";
 import Search from "./Search";
 import moment from "moment-timezone";
 
-import axios from "axios";
+// import axios from "axios";
 
 import "./WeatherCard.css";
 
 export default function NavBar() {
   const [sideBar, setSideBar] = useState(false);
-  const [current, setCurrent] = useState();
+  // const [current, setCurrent] = useState();
   const [city, setCity] = useState("Huaraz");
   const [data, setData] = useState();
   const [forecast, setForecast] = useState([]);
@@ -46,49 +46,7 @@ export default function NavBar() {
     setSideBar(!sideBar);
   }
 
-  //function location
-  function handleLocation() {
-    setLocation(!locaTion);
-  }
 
-  //images and time
-  const handleClick = () => {
-    if (name !== "") {
-      // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=ea8d1197afcdcf7db5d10fa7a763caaf&&units=metric`;
-      axios.get(data);
-      console
-        .log(data)
-        .then((res) => {
-          let imagePath = "";
-          if (res.data.weather[0].main == "Clouds") {
-            imagePath = "./clouds2.png";
-          } else if (res.data.weather[0].main == "Clear") {
-            imagePath = "./clear2.png";
-          } else if (res.data.weather[0].main == "Rain") {
-            imagePath = "./rain2.png";
-          } else if (res.data.weather[0].main == "Drizzle") {
-            imagePath = "./rayo2.png";
-          } else if (res.data.weather[0].main == "Mist") {
-            imagePath = "./shower2.png";
-          } else {
-            imagePath = "./cloud2.png";
-          }
-          console.log(res.data);
-
-          setData({
-            ...data,
-            celcius: res.data.main.temp,
-            name: res.data.name,
-            humidity: res.data.main.humidity,
-            speed: res.data.wind.speed,
-            image: imagePath,
-          });
-        })
-        .catch((err) => console.log(err));
-    }
-  };
-
-  // return (
 
   return (
     <main id="container">
@@ -99,7 +57,7 @@ export default function NavBar() {
               <span id="btnSearch" onClick={handleSideBar}>
                 <Search />
               </span>
-              <button className="btnLocation" onClick={handleClick}>
+              <button className="btnLocation">
                 <span className="material-symbols-outlined">my_location</span>
               </button>
             </div>
@@ -113,7 +71,7 @@ export default function NavBar() {
             <div id="grados1">
               <div id="grados">
                 <span>{data.main.temp.toFixed(0)}</span>
-                
+            
               </div>
               <div id="gradosc">
                 <span>ºC</span>
@@ -145,7 +103,6 @@ export default function NavBar() {
                         <span className="material-symbols-outlined">
                           near_me
                           </span>
-                          {/* <p>aguja</p> */}
                         </div>
                         <div>
                           <p id="agujal">wsw</p>
